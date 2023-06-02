@@ -1,8 +1,6 @@
 # Compiled class file
 *.class
-abc.txt
-*.porperties
-
+bin/
 # Log file
 *.log
 

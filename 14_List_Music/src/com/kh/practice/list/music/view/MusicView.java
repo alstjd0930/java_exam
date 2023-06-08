@@ -131,12 +131,38 @@ public class MusicView {
 		}
 	}
 	public void setMusic() {
-		
+		System.out.println("****** 특정 곡 정보수정 ******");
+		System.out.println("****** 수정할 곡명 입력 ******");
+		String title = sc.nextLine();
+		System.out.println("****** 변경할 곡명 입력 ******");
+		String newtitle = sc.nextLine();
+		System.out.println("****** 변경할 가수명 입력 ******");
+		String newsinger = sc.nextLine();
+		Music result =mc.setMusic(title, new Music(newtitle, newsinger));	//setMusic 눌러보니 Music으로 반환값을 받고있음
+		if(result == null) {
+			System.out.println("수정 할 곡이 없습니다.");
+		}else {
+			System.out.printf(" 000(%s, %s)\n" , result.getTitle(), result.getSinger());
+			
+		}
 	}
 	public void ascTitle() {
+		System.out.println("****** 곡 명 오름차순 ******");
+		int result = mc.ascTitle();
+		if(result>0) {
+			System.out.println("정렬성공");
+		}else {
+			System.out.println("정렬실패");
+		}
 		
 	}
 	public void desSinger() {
-		
+		System.out.println("****** 가수 명 내림차순 ******");
+		int result = mc.desSinger();
+		if(result>0) {
+			System.out.println("정렬성공");
+		}else {
+			System.out.println("정렬실패");
+		}
 	}
 }

@@ -36,6 +36,7 @@ public class MusicView {
 		System.out.println("8. 가수명 내림차순 정렬");
 		System.out.println("9. 종료");
 		System.out.println("0. 파일에 저장");
+		System.out.println("11.로드파일");
 		System.out.print("메뉴 번호 선택 >>");
 		String menuStr = sc.nextLine();		//입력값을 str으로받아서 int로
 		menu = -1;
@@ -47,6 +48,7 @@ public class MusicView {
 			}
 			switch(menu) {
 			//정상 입력 경우
+			case 10:			loadfile();	break;
 			case 0:				saveFile();					break;
 			case 1:				addList();					break;
 			case 2:				addAtZero();				break;
@@ -168,6 +170,24 @@ public class MusicView {
 		}
 	}
 	public void saveFile() {
+		System.out.println("====곡정보를 파일에 저장====");
+		System.out.println("저장할 파일경로 작성");
+		String fileName=sc.nextLine();
 		
+		int result = mc.saveFile(fileName);
+		if(result >0) {
+			
+		}
+	}
+	public void loadfile() {
+		System.out.println("====곡정보를 파일에 저장====");
+		System.out.println("저장할 파일경로 작성");
+		String fileName=sc.nextLine();
+		int result = mc.loadFile(fileName);
+		if(result >0) {
+			System.out.println("성공");
+		}else {
+			System.out.println("실패");
+		}
 	}
 }

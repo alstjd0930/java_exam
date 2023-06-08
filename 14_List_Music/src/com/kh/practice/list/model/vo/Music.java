@@ -3,7 +3,7 @@ package com.kh.practice.list.model.vo;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Music implements Comparable<Object>,Serializable{
+public class Music implements Comparable<Object>,Serializable{	//직렬화 후 Music 오류 제너레이터
 	private static final long serialVersionUID = 3540667243697005826L;
 	
 	private String title;

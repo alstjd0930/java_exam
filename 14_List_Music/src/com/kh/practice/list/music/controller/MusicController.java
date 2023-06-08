@@ -1,5 +1,10 @@
 package com.kh.practice.list.music.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -11,13 +16,13 @@ public class MusicController {
 	
 	public MusicController() {
 		//list에 미리 곡 넣어두기
-		list.add(new Music("aa","aaa"));
-		list.add(new Music("bb","bbb"));
-		list.add(new Music("cc","ccc"));
-		list.add(new Music("dd","ddd"));
-		list.add(new Music("ff","fff"));
-		list.add(new Music("gg","ggg"));
-		list.add(new Music("qq","qqq"));
+//		list.add(new Music("aa","aaa"));
+//		list.add(new Music("bb","bbb"));
+//		list.add(new Music("cc","ccc"));
+//		list.add(new Music("dd","ddd"));
+//		list.add(new Music("ff","fff"));
+//		list.add(new Music("gg","ggg"));
+//		list.add(new Music("qq","qqq"));
 	}
 	
 	public int addList(Music music) {
@@ -130,6 +135,32 @@ public class MusicController {
 	public int dessinger2() {
 		int result =0;
 		Collections.sort(list);
+		return result;
+	}
+	public int saveFile(String filePath) {// String 형태로 filePath를 받는다 
+		int result=0;		//0: 저장 실패     1: 저장 성공
+		FileOutputStream fos =null;
+		BufferedOutputStream bos =null;
+		ObjectOutputStream oos = null;
+		try {
+			fos = new FileOutputStream(filePath);	//기반 스트림
+			bos = new BufferedOutputStream(fos);
+			oos = new ObjectOutputStream(oos);		//보조 스트림
+		}catch(FileNotFoundException e) {	
+			e.printStackTrace();
+		}catch(IOException e){
+			e.printStackTrace();
+		}finally {
+			try {
+				if(oos!=null)oos.close();
+				if(bos!=null)bos.close();		//생성순서 반대로 close
+				if(fos!=null)fos.close();	
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
 		return result;
 	}
 }
